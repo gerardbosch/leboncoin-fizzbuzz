@@ -34,7 +34,7 @@ class ComputeFizzBuzzControllerIntegrationTest(
       .expectStatus().isOk
       .expectHeader().contentType("text/csv;charset=UTF-8")
       .expectBody(String::class.java).isEqualTo("""
-        12LeBon4CoinLeBon78LeBonCoin11LeBon1314LeBonCoin1617LeBon19CoinLeBon2223LeBonCoin
+        1,2,LeBon,4,Coin,LeBon,7,8,LeBon,Coin,11,LeBon,13,14,LeBonCoin,16,17,LeBon,19,Coin,LeBon,22,23,LeBon,Coin
       """.trimIndent())
   }
 

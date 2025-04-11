@@ -9,6 +9,10 @@ import xyz.gerardbosch.leboncoinfizzbuzz.application.ComputeFizzBuzzUseCase
 class ComputeFizzBuzzConfig {
 
   @Bean
-  fun computeFizzBuzz(@Value("\${app.fizzbuzz.start}") start: Int) =
-    ComputeFizzBuzzUseCase(start)
+  fun computeFizzBuzz(
+    @Value("\${app.fizzbuzz.start}") start: Int,
+    @Value("\${app.fizzbuzz.delimiter}") delimiter: String,
+  ) =
+    ComputeFizzBuzzUseCase(start, delimiter)
+
 }
