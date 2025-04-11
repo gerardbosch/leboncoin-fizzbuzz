@@ -16,8 +16,7 @@ class ComputeFizzBuzzConfig {
   @Bean
   fun fizzBuzzGenerator(
     @Value("\${app.fizzbuzz.start}") start: Int,
-    @Value("\${app.fizzbuzz.delimiter}") delimiter: String,
   ) =
-    FizzBuzzGenerator(start = start, delimiter = delimiter)
+    FizzBuzzGenerator(start = start)
 
 }

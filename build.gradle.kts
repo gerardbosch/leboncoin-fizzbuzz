@@ -36,11 +36,23 @@ dependencies {
   // TODO
 //  developmentOnly("org.springframework.boot:spring-boot-docker-compose")
   annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+  // -- Test deps
+  val kotestVersion = "5.9.1"
+  val kotestSpringVersion = "1.3.0"
+
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("io.projectreactor:reactor-test")
   testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
   testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
+  // Kotest core dependencies
+  testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
+  testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
+  // Kotest Spring extension
+  testImplementation("io.kotest.extensions:kotest-extensions-spring:$kotestSpringVersion")
+
   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
 }
 
 kotlin {

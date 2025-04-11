@@ -5,11 +5,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
-import xyz.gerardbosch.leboncoinfizzbuzz.util.intersperse
 
 class FizzBuzzGenerator(
   val start: Int,
-  val delimiter: String,
 ) {
 
   operator fun invoke(
@@ -32,7 +30,6 @@ class FizzBuzzGenerator(
 
     return (start..limit.value).asFlow()
       .map(::fizzBuzzString)
-      .intersperse(delimiter)
       .flowOn(Dispatchers.Default) // offload computation to a CPU-bound thread pool
   }
 }
