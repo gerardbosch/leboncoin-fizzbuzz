@@ -4,5 +4,6 @@ import xyz.gerardbosch.leboncoinfizzbuzz.domain.FizzBuzzParams
 
 data class Stats(
   val hitCount: UInt,
+  // TODO rename to params
   val mostFrequent: FizzBuzzParams,
 )

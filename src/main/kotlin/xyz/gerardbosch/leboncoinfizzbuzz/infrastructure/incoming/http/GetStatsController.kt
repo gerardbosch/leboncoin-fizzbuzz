@@ -16,7 +16,7 @@ class GetStatsController(
 
   override fun getMostFrequent(): ResponseEntity<StatsMostFreqResp> {
 
-    log.info("Received request for most frequent stats")
+    log.info("Received request to get the most frequent stats")
 
     return getStats()
       .map(Stats::toRespBody)

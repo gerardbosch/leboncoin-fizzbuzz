@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Flux
 import xyz.gerardbosch.leboncoinfizzbuzz.application.ComputeFizzBuzzUseCase
+import xyz.gerardbosch.leboncoinfizzbuzz.domain.FizzBuzzParams
 import xyz.gerardbosch.leboncoinfizzbuzz.domain.fizzbuzzgeneration.BuzzNum
 import xyz.gerardbosch.leboncoinfizzbuzz.domain.fizzbuzzgeneration.BuzzText
 import xyz.gerardbosch.leboncoinfizzbuzz.domain.fizzbuzzgeneration.FizzNum
@@ -24,18 +25,16 @@ class ComputeFizzBuzzController(
   override fun getFizzBuzz(req: ComputeFizzBuzzReq): Flux<String> {
     log.info("Received request to compute FizzBuzz: $req")
 
-    return computeFizzBuzz(req.toCmd())
+    return computeFizzBuzz(req.toDomain())
       .intersperse(delimiter)
       .asFlux()
   }
 }
 
-private fun ComputeFizzBuzzReq.toCmd(): ComputeFizzBuzzUseCase.Cmd {
-  return ComputeFizzBuzzUseCase.Cmd(
-    limit = Limit(limit),
-    fizzNum = FizzNum(fizzNum),
-    buzzNum = BuzzNum(buzzNum),
-    fizzText = FizzText(fizzText),
-    buzzText = BuzzText(buzzText),
-  )
-}
+private fun ComputeFizzBuzzReq.toDomain() = FizzBuzzParams(
+  limit = Limit(limit),
+  fizzNum = FizzNum(fizzNum),
+  buzzNum = BuzzNum(buzzNum),
+  fizzText = FizzText(fizzText),
+  buzzText = BuzzText(buzzText),
+)

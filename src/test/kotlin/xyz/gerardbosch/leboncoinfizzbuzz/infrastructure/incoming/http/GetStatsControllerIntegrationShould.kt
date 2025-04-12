@@ -3,9 +3,11 @@ package xyz.gerardbosch.leboncoinfizzbuzz.infrastructure.incoming.http
 import io.kotest.core.spec.style.StringSpec
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType.APPLICATION_JSON
+import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.web.reactive.server.WebTestClient
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@DirtiesContext
 class GetStatsControllerIntegrationShould(
   private val webTestClient: WebTestClient,
 ) : StringSpec({
@@ -21,7 +23,7 @@ class GetStatsControllerIntegrationShould(
       .expectBody().isEmpty
   }
 
-  "should respond with the stats when at least one fizzbuzz has been computed" {
+  "should respond 200 OK with the stats when at least one fizzbuzz has been computed" {
 
     // Given - A fizzbuzz has been computed
     webTestClient.post()

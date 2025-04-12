@@ -18,9 +18,6 @@ class FizzBuzzGenerator(
     val fizzText = params.fizzText.value
     val buzzText = params.buzzText.value
 
-    // REVIEWER-NOTE: Using Flow for lazy and non-blocking processing. That avoids in-memory buffering (lazy stream) and
-    //  blocking the event-loop thread (non-blocking). N.B. IntRange does not expand or evaluate when created.
-
     // TODO rename to generateToken
     fun fizzBuzzString(num: Int): String = when {
       num % fizzNum == 0 && num % buzzNum == 0 -> "${fizzText}${buzzText}"
@@ -28,6 +25,11 @@ class FizzBuzzGenerator(
       num % buzzNum == 0 -> buzzText
       else -> num.toString()
     }
+
+    // REVIEWER-NOTE: Using Flow for lazy and non-blocking processing. That avoids:
+    //  - in-memory buffering (lazy stream); and
+    //  - blocking the event-loop thread (non-blocking).
+    //  N.B. IntRange does not expand or evaluate when created.
 
     return (start..params.limit.value).asFlow()
       .map(::fizzBuzzString)
