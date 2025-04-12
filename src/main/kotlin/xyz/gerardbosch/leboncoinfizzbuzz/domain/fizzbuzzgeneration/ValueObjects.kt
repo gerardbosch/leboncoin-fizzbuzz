@@ -2,6 +2,7 @@ package xyz.gerardbosch.leboncoinfizzbuzz.domain.fizzbuzzgeneration
 
 @JvmInline
 value class Limit private constructor(val value: Int) {
+
   companion object {
     operator fun invoke(value: Int): Limit {
       require(value > 0) { "Limit must be greater than 0" }

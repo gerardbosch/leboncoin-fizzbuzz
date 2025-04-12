@@ -21,6 +21,7 @@ class FizzBuzzGenerator(
     // REVIEWER-NOTE: Using Flow for lazy and non-blocking processing. That avoids in-memory buffering (lazy stream) and
     //  blocking the event-loop thread (non-blocking). N.B. IntRange does not expand or evaluate when created.
 
+    // TODO rename to generateToken
     fun fizzBuzzString(num: Int): String = when {
       num % fizzNum.value == 0 && num % buzzNum.value == 0 -> "${fizzText.value}${buzzText.value}"
       num % fizzNum.value == 0 -> fizzText.value
