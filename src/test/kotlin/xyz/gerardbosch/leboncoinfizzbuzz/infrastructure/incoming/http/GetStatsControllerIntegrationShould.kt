@@ -14,10 +14,11 @@ class GetStatsControllerIntegrationShould(
     // Given - No "/fizzbuzz" requests has been made
     // When
     webTestClient.get()
-      .uri("/fizzbuzz/stats")
+      .uri("/fizzbuzz/stats/most-frequent")
       .exchange()
       // Then
       .expectStatus().isNoContent
+      .expectBody().isEmpty
   }
 
   "should respond with the stats when at least one fizzbuzz has been computed" {

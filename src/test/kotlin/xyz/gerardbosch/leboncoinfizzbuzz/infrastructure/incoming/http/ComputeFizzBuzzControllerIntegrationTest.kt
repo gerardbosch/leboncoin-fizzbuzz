@@ -7,6 +7,7 @@ import org.springframework.test.web.reactive.server.WebTestClient
 import xyz.gerardbosch.leboncoinfizzbuzz.infrastructure.incoming.http.FixturesFizzBuzzCompute.validReq
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+// TODO rename to IntegrationShould
 class ComputeFizzBuzzControllerIntegrationTest(
   private val webTestClient: WebTestClient,
 ) : StringSpec({

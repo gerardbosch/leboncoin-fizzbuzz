@@ -25,6 +25,8 @@ repositories {
 }
 
 dependencies {
+  val arrowVersion = "1.2.4"
+
   implementation("org.springframework.boot:spring-boot-starter-actuator")
   implementation("org.springframework.boot:spring-boot-starter-validation")
   implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -32,6 +34,9 @@ dependencies {
   implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
   implementation("org.jetbrains.kotlin:kotlin-reflect")
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+  implementation(platform("io.arrow-kt:arrow-stack:$arrowVersion"))
+  implementation("io.arrow-kt:arrow-core")
+  implementation("io.arrow-kt:arrow-fx-coroutines")
   developmentOnly("org.springframework.boot:spring-boot-devtools")
   // TODO
 //  developmentOnly("org.springframework.boot:spring-boot-docker-compose")

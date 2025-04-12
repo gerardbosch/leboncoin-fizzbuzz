@@ -3,6 +3,7 @@ package xyz.gerardbosch.leboncoinfizzbuzz.domain.fizzbuzzgeneration
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.flow.toList
+import xyz.gerardbosch.leboncoinfizzbuzz.domain.FizzBuzzParams
 
 class FizzBuzzGeneratorShould : StringSpec({
 
@@ -11,13 +12,13 @@ class FizzBuzzGeneratorShould : StringSpec({
     val generator = FizzBuzzGenerator(start = 1)
 
     // When
-    val result = generator(
+    val result = generator(FizzBuzzParams(
       Limit(15),
       FizzNum(3),
       BuzzNum(5),
       FizzText("LeBon"),
       BuzzText("Coin"),
-    ).toList()
+    )).toList()
 
     // Then
     result shouldBe listOf(

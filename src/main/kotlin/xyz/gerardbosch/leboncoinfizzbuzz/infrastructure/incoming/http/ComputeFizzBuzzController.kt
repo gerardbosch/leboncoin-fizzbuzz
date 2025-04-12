@@ -11,7 +11,7 @@ import xyz.gerardbosch.leboncoinfizzbuzz.domain.fizzbuzzgeneration.FizzNum
 import xyz.gerardbosch.leboncoinfizzbuzz.domain.fizzbuzzgeneration.FizzText
 import xyz.gerardbosch.leboncoinfizzbuzz.domain.fizzbuzzgeneration.Limit
 import xyz.gerardbosch.leboncoinfizzbuzz.infrastructure.incoming.http.api.ComputeFizzBuzzApi
-import xyz.gerardbosch.leboncoinfizzbuzz.infrastructure.incoming.http.api.ComputeFizzBuzzReq
+import xyz.gerardbosch.leboncoinfizzbuzz.infrastructure.incoming.http.api.ComputeFizzBuzzApi.ComputeFizzBuzzReq
 import xyz.gerardbosch.leboncoinfizzbuzz.util.intersperse
 import xyz.gerardbosch.leboncoinfizzbuzz.util.log
 
@@ -22,7 +22,7 @@ class ComputeFizzBuzzController(
 ) : ComputeFizzBuzzApi {
 
   override fun getFizzBuzz(req: ComputeFizzBuzzReq): Flux<String> {
-    log.info("Received request: $req")
+    log.info("Received request to compute FizzBuzz: $req")
 
     return computeFizzBuzz(req.toCmd())
       .intersperse(delimiter)

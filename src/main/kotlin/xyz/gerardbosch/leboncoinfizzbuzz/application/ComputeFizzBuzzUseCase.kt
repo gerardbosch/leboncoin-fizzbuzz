@@ -1,6 +1,8 @@
 package xyz.gerardbosch.leboncoinfizzbuzz.application
 
 import kotlinx.coroutines.flow.Flow
+import xyz.gerardbosch.leboncoinfizzbuzz.application.ComputeFizzBuzzUseCase.Cmd
+import xyz.gerardbosch.leboncoinfizzbuzz.domain.FizzBuzzParams
 import xyz.gerardbosch.leboncoinfizzbuzz.domain.fizzbuzzgeneration.BuzzNum
 import xyz.gerardbosch.leboncoinfizzbuzz.domain.fizzbuzzgeneration.BuzzText
 import xyz.gerardbosch.leboncoinfizzbuzz.domain.fizzbuzzgeneration.FizzBuzzGenerator
@@ -16,7 +18,7 @@ class ComputeFizzBuzzUseCase(
 
     // TODO Update statistics with the request
 
-    return generateFizzBuzz(cmd.limit, cmd.fizzNum, cmd.buzzNum, cmd.fizzText, cmd.buzzText)
+    return generateFizzBuzz(cmd.toDomain())
   }
 
   data class Cmd(
@@ -27,3 +29,6 @@ class ComputeFizzBuzzUseCase(
     val buzzText: BuzzText,
   )
 }
+
+private fun Cmd.toDomain(): FizzBuzzParams =
+  FizzBuzzParams(limit, fizzNum, buzzNum, fizzText, buzzText)
