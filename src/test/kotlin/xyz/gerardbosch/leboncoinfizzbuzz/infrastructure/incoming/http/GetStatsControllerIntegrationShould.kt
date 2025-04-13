@@ -12,7 +12,7 @@ class GetStatsControllerIntegrationShould(
   private val webTestClient: WebTestClient,
 ) : StringSpec({
 
-  "should respond with 204 NoContent when no fizzbuzz has been computed" {
+  "respond with 204 NoContent when no fizzbuzz has been computed" {
     // Given - No "/fizzbuzz" requests has been made
     // When
     webTestClient.get()
@@ -23,7 +23,7 @@ class GetStatsControllerIntegrationShould(
       .expectBody().isEmpty
   }
 
-  "should respond 200 OK with the stats when at least one fizzbuzz has been computed" {
+  "respond 200 OK with the stats when at least one fizzbuzz has been computed" {
 
     // Given - A fizzbuzz has been computed
     webTestClient.post()
@@ -44,6 +44,42 @@ class GetStatsControllerIntegrationShould(
           "hitCount": 1,
           "request" : {
             "limit": 25,
+            "fizzNum": 3,
+            "buzzNum": 5,
+            "fizzText": "LeBon",
+            "buzzText": "Coin"
+          }
+        }
+      """.trimIndent())
+  }
+
+  "respond 200 OK with the stats of latest request when there's a draw in frequency" {
+    // Given - Two fizzbuzz have been computed with different parameters
+    webTestClient.post()
+      .uri("/fizzbuzz")
+      .contentType(APPLICATION_JSON)
+      .bodyValue(FixturesFizzBuzzCompute.validReq().copy(limit = 30))
+      .exchange()
+      .expectStatus().isOk
+
+    webTestClient.post()
+      .uri("/fizzbuzz")
+      .contentType(APPLICATION_JSON)
+      .bodyValue(FixturesFizzBuzzCompute.validReq().copy(limit = 15))
+      .exchange()
+      .expectStatus().isOk
+
+    // When
+    webTestClient.get()
+      .uri("/fizzbuzz/stats/most-frequent")
+      .exchange()
+      // Then
+      .expectStatus().isOk
+      .expectBody().json("""
+        {
+          "hitCount": 1,
+          "request" : {
+            "limit": 15,
             "fizzNum": 3,
             "buzzNum": 5,
             "fizzText": "LeBon",

@@ -14,7 +14,7 @@ class ComputeFizzBuzzControllerIntegrationTest(
   private val webTestClient: WebTestClient,
 ) : StringSpec({
 
-  "should respond with a correct FizzBuzz stream" {
+  "respond with a correct FizzBuzz stream" {
     // Given
     val req = validReq()
     // When
@@ -32,7 +32,7 @@ class ComputeFizzBuzzControllerIntegrationTest(
       )
   }
 
-  "should respond with a 400 when the request is invalid" {
+  "respond 400 when the request is invalid" {
     // Given
     val invalidReq = validReq().copy(limit = 0)
     // When
@@ -45,7 +45,25 @@ class ComputeFizzBuzzControllerIntegrationTest(
       .expectStatus().isBadRequest
       .expectBody().json(
         """
-        {"message":"Limit must be greater than 0"}
+        {"message": "Limit must be greater than 0"}
+      """.trimIndent()
+      )
+  }
+
+  "respond 500 when the fizzbuzz computation fails" {
+    // Given
+    val invalidReq = validReq().copy(fizzNum = 0, buzzNum = 0)
+    // When
+    webTestClient.post()
+      .uri("/fizzbuzz")
+      .contentType(APPLICATION_JSON)
+      .bodyValue(invalidReq)
+      .exchange()
+      // Then
+      .expectStatus().is5xxServerError
+      .expectBody().json(
+        """
+        {"message": "/ by zero"}
       """.trimIndent()
       )
   }
