@@ -1,12 +1,14 @@
 package xyz.gerardbosch.leboncoinfizzbuzz.infrastructure.incoming.http
 
 import io.kotest.core.spec.style.StringSpec
+import org.junit.jupiter.api.Tag
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType.APPLICATION_JSON
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.web.reactive.server.WebTestClient
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Tag("integration-test")
 @DirtiesContext
 class GetStatsControllerIntegrationShould(
   private val webTestClient: WebTestClient,

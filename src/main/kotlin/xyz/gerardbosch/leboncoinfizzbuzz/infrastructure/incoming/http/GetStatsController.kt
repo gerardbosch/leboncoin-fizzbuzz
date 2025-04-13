@@ -31,10 +31,10 @@ private fun Stats.toRespBody() =
   StatsMostFreqResp(
     hitCount = hitCount.toInt(),
     request = RequestedData(
-      limit = mostFrequent.limit.value,
-      fizzNum = mostFrequent.fizzNum.value,
-      buzzNum = mostFrequent.buzzNum.value,
-      fizzText = mostFrequent.fizzText.value,
-      buzzText = mostFrequent.buzzText.value,
+      limit = params.limit.value,
+      fizzNum = params.fizzNum.value,
+      buzzNum = params.buzzNum.value,
+      fizzText = params.fizzText.value,
+      buzzText = params.buzzText.value,
     )
   )

@@ -3,8 +3,10 @@ package xyz.gerardbosch.leboncoinfizzbuzz.domain.fizzbuzzgeneration
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.flow.toList
+import org.junit.jupiter.api.Tag
 import xyz.gerardbosch.leboncoinfizzbuzz.domain.FizzBuzzParams
 
+@Tag("unit-test")
 class FizzBuzzGeneratorShould : StringSpec({
 
   "generate a correct FizzBuzz sequence" {

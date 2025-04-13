@@ -18,8 +18,7 @@ class FizzBuzzGenerator(
     val fizzText = params.fizzText.value
     val buzzText = params.buzzText.value
 
-    // TODO rename to generateToken
-    fun fizzBuzzString(num: Int): String = when {
+    fun generateToken(num: Int): String = when {
       num % fizzNum == 0 && num % buzzNum == 0 -> "${fizzText}${buzzText}"
       num % fizzNum == 0 -> fizzText
       num % buzzNum == 0 -> buzzText
@@ -32,7 +31,7 @@ class FizzBuzzGenerator(
     //  N.B. IntRange does not expand or evaluate when created.
 
     return (start..params.limit.value).asFlow()
-      .map(::fizzBuzzString)
+      .map(::generateToken)
       .flowOn(Dispatchers.Default) // offload computation to a CPU-bound thread pool
   }
 
