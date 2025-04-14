@@ -1,5 +1,7 @@
 # LeBonCoin FizzBuzz
 
+[![Build Status](https://github.com/gerardbosch/leboncoin-fizzbuzz/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/gerardbosch/leboncoin-fizzbuzz/actions/workflows/test.yml)
+
 > [!IMPORTANT]
 > I published this solution with the permission and as required by LeBonCoin.
 

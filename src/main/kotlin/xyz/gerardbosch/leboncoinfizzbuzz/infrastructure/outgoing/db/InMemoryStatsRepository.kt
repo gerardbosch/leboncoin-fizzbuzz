@@ -1,8 +1,7 @@
 package xyz.gerardbosch.leboncoinfizzbuzz.infrastructure.outgoing.db
 
-import arrow.core.None
 import arrow.core.Option
-import arrow.core.Some
+import arrow.core.toOption
 import xyz.gerardbosch.leboncoinfizzbuzz.domain.FizzBuzzParams
 import xyz.gerardbosch.leboncoinfizzbuzz.domain.fizzbuzzstats.Stats
 import xyz.gerardbosch.leboncoinfizzbuzz.domain.fizzbuzzstats.StatsRepository
@@ -39,8 +38,7 @@ class InMemoryStatsRepository : StatsRepository {
   }
 
   override fun getMostFrequent(): Option<Stats> =
-    mostFrequent
-      ?.let { Some(Stats(it.count, it.params)) }
-      ?: None
+    mostFrequent.toOption()
+      .map { Stats(it.count, it.params) }
 
 }
