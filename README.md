@@ -12,6 +12,10 @@ The project implements 2 endpoints:
 
 - When there’s a draw in the frequency counter of several requests, the newest wins. This is just an arbitrary decision. Other mechanisms could be considered, like returning a list of all parameters with the max. frequency.
 
+The application contains 3 use cases. They are located in the `application` package:
+- `ComputeFizzBuzzUseCase` - Computes the FizzBuzz sequence.
+- `UpdateStatsUseCase` - Updates the statistics.
+- `GetStatsUseCase` - Gets the statistics.
 
 ## How to run
 
