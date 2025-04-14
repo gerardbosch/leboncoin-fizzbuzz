@@ -38,8 +38,6 @@ dependencies {
   implementation("io.arrow-kt:arrow-core")
   implementation("io.arrow-kt:arrow-fx-coroutines")
   developmentOnly("org.springframework.boot:spring-boot-devtools")
-  // TODO
-//  developmentOnly("org.springframework.boot:spring-boot-docker-compose")
   annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
   // -- Test deps
