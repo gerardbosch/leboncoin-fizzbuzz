@@ -23,6 +23,11 @@ The algorithmic parts can be found at:
 
 ## How to run
 
+Prerequisites:
+- **JDK 21**  if run with Gradle. *You can install it with [Sdkman](https://sdkman.io/), e.g.* `sdk install java 21.0.6-tem`
+- **Docker** (with compose) if run with Docker compose
+
+
 **Run the application tests**
 
 ```
