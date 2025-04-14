@@ -17,6 +17,10 @@ The application contains 3 use cases. They are located in the `application` pack
 - `UpdateStatsUseCase` - Updates the statistics.
 - `GetStatsUseCase` - Gets the statistics.
 
+The algorithmic parts can be found at:
+- [FizzBuzzGenerator.kt](./src/main/kotlin/xyz/gerardbosch/leboncoinfizzbuzz/domain/fizzbuzzgeneration/FizzBuzzGenerator.kt)
+- [InMemoryStatsRepository.kt](./src/main/kotlin/xyz/gerardbosch/leboncoinfizzbuzz/infrastructure/outgoing/db/InMemoryStatsRepository.kt)
+
 ## How to run
 
 **Run the application tests**
