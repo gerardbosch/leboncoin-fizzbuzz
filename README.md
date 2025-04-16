@@ -80,6 +80,12 @@ We can check that the memory remains constant and that streaming very large amou
 ![img1.png](doc/1.concurrent-request-log.png)
 ![img2.png](doc/2.memory-usage.png)
 
+**API docs and Swagger UI**
+
+You can check the API endpoints in Swagger UI:
+- [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+- [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+
 
 ## Implementation details
 

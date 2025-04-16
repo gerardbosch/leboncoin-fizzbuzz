@@ -37,6 +37,7 @@ dependencies {
   implementation(platform("io.arrow-kt:arrow-stack:$arrowVersion"))
   implementation("io.arrow-kt:arrow-core")
   implementation("io.arrow-kt:arrow-fx-coroutines")
+  implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.6")
   developmentOnly("org.springframework.boot:spring-boot-devtools")
   annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
