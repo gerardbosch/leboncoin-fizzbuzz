@@ -9,6 +9,8 @@ import xyz.gerardbosch.leboncoinfizzbuzz.domain.FizzBuzzParams
 @Tag("unit-test")
 class FizzBuzzGeneratorShould : StringSpec({
 
+  // TODO Add a test for invalid parameter start=0
+
   "generate a correct FizzBuzz sequence" {
     // Given
     val generator = FizzBuzzGenerator(start = 1)
